@@ -15,11 +15,14 @@ export interface Exercise {
   createdAt: string;
 }
 
+export type RoutinePhase = "bulk" | "cut" | "deload" | "maintenance";
+
 export interface Routine {
   id: string;
   userId: string;
   name: string;
   notes?: string | null;
+  phase?: RoutinePhase | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -70,4 +73,39 @@ export interface SetLog {
 /** Massimale stimato con formula di Epley: 1RM = peso * (1 + reps / 30) */
 export function estimateOneRepMax(weightKg: number, reps: number): number {
   return weightKg * (1 + reps / 30);
+}
+
+export interface BodyMeasurement {
+  id: string;
+  userId: string;
+  recordedAt: string;
+  weightKg?: number | null;
+  /** Chiave libera, es. { armLeftCm: 38, waistCm: 82 } */
+  measurements: Record<string, number>;
+  photoUrls: string[];
+  createdAt: string;
+}
+
+export interface PlateSetConfig {
+  id: string;
+  userId: string;
+  barWeightKg: number;
+  availablePlatesKg: number[];
+}
+
+/** Percentuali standard fisse del warm-up rispetto al peso di lavoro. */
+export const WARMUP_RAMP_PERCENTAGES = [0.4, 0.6, 0.8] as const;
+
+export type CoachingSuggestionStatus = "pending" | "accepted" | "rejected";
+
+/** Proposta periodica di Claude su una routine, da confermare manualmente. */
+export interface CoachingSuggestion {
+  id: string;
+  userId: string;
+  routineId: string;
+  generatedAt: string;
+  summary: string;
+  proposedChanges: Record<string, unknown>;
+  status: CoachingSuggestionStatus;
+  reviewedAt?: string | null;
 }

@@ -26,6 +26,18 @@ Termini di dominio usati nel codice, nello schema DB e nella UI. Fonte di verit�
 - **Watch companion** — target nativo watchOS (non Expo) che avvia/logga una Workout Session e sincronizza con l'app iOS via WatchConnectivity.
 - **AI import** — ricerca di un esercizio via Claude API che propone dati strutturati (nome, gruppo muscolare, istruzioni) da confermare manualmente prima del salvataggio come `Exercise` con `source = 'ai'`.
 
+## Progressione e coaching
+
+- **Double progression** — regola algoritmica (no AI): aumenta peso quando l'utente completa tutte le serie al massimo reps del range target, altrimenti aumenta reps. Calcolo locale, offline.
+- **Coaching Suggestion** — proposta di modifica a una `Routine` generata periodicamente da Claude (analisi dello storico), con stato `pending`/`accepted`/`rejected`. Mai applicata automaticamente.
+- **Fase (Routine Phase)** — etichetta informativa su una `Routine`: `bulk`, `cut`, `deload`, `maintenance`. Non altera automaticamente i target.
+
+## Corpo e strumenti
+
+- **Body Measurement** — rilevazione periodica di peso, misure a nastro (chiavi libere) e foto, correlabile con volume/PR per vedere l'effetto degli allenamenti.
+- **Plate Set Config** — bilanciere e dischi realmente disponibili all'utente, usati dal calcolatore piastre in-sessione.
+- **Warm-up ramp** — serie di riscaldamento suggerite a percentuali fisse (40/60/80%) del peso di lavoro.
+
 ## Infrastruttura
 
 - **Self-hosted** — l'istanza Supabase (Postgres+Auth+Storage+Realtime+Functions) gira su un'istanza AWS EC2 di proprietà, non su Supabase Cloud (vedi ADR-0009).

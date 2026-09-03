@@ -18,6 +18,7 @@ Tutte le scelte (e le alternative scartate) sono documentate come ADR in
 2. `0009-self-hosted-supabase-aws.md` — backend self-hosted su AWS EC2 (raffina `0002`)
 3. `0001-monorepo-turborepo.md` — struttura del repo
 4. `0006-offline-first-workout-logging.md` — perché serve un outbox locale (SwiftData)
+5. `0011`–`0015` — espansioni modulo Palestra: coaching AI periodico, body tracking, strumenti in-sessione (piastre/warm-up/Live Activities), Siri Shortcuts, fasi routine (bulk/cut/deload)
 
 ## Struttura repo
 
