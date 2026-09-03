@@ -26,6 +26,12 @@ Termini di dominio usati nel codice, nello schema DB e nella UI. Fonte di verit�
 - **Watch companion** — target nativo watchOS (non Expo) che avvia/logga una Workout Session e sincronizza con l'app iOS via WatchConnectivity.
 - **AI import** — ricerca di un esercizio via Claude API che propone dati strutturati (nome, gruppo muscolare, istruzioni) da confermare manualmente prima del salvataggio come `Exercise` con `source = 'ai'`.
 
+## Infrastruttura
+
+- **Self-hosted** — l'istanza Supabase (Postgres+Auth+Storage+Realtime+Functions) gira su un'istanza AWS EC2 di proprietà, non su Supabase Cloud (vedi ADR-0009).
+- **Edge Function** — funzione server-side Deno/TS deployata insieme allo stack Supabase, usata per logica che non deve girare sul client (es. proxy Claude API per l'import esercizi).
+- **Outbox** — coda locale (SwiftData) di mutazioni non ancora sincronizzate col backend, riprocessata quando torna la rete (vedi ADR-0006).
+
 ## Moduli futuri (non ancora modellati)
 
 - **Note / PKM** — appunti collegabili (backlink), tag.

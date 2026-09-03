@@ -1,7 +1,7 @@
 # ADR-0003: Expo (prebuild/bare) + modulo nativo custom per Apple Watch
 
 ## Status
-Accettata — rischio tecnico noto, da validare con uno spike prima di costruirci sopra il modulo Palestra.
+**Superseded da [ADR-0010](0010-swift-native-ios-watch.md).** Contenuto lasciato per storico della decisione.
 
 ## Contesto
 Prodotto iOS-first, con app companion su Apple Watch che deve poter avviare e loggare un allenamento in autonomia, sincronizzando con l'app iPhone. **Expo/React Native non ha un target watchOS ufficiale**: un'app Watch reale richiede un target SwiftUI/WatchKit nativo dentro il progetto Xcode.
@@ -9,16 +9,10 @@ Prodotto iOS-first, con app companion su Apple Watch che deve poter avviare e lo
 ## Opzioni valutate
 1. **Tutto nativo Swift/SwiftUI** (iOS+Watch), web separato — massima integrazione, ma abbandona la condivisione di codice/tipi con il web e rialza il costo di ogni feature (va scritta due volte: RN + Swift).
 2. **Expo ora, Watch in fase 2** — riduce rischio iniziale ma rimanda un requisito esplicito del prodotto ("iOS first... con Apple Watch").
-3. **Expo con prebuild + target watchOS nativo aggiunto via config plugin** — *scelta*: si resta su Expo/RN per iOS e per la logica condivisa, si aggiunge un target Watch nativo (SwiftUI) dentro `apps/mobile/ios` generato da `expo prebuild`, comunicazione via `WatchConnectivity` (framework nativo, esposto a RN con un modulo nativo custom).
+3. **Expo con prebuild + target watchOS nativo aggiunto via config plugin** — *scelta originale*: si resta su Expo/RN per iOS e per la logica condivisa, si aggiunge un target Watch nativo (SwiftUI) dentro `apps/mobile/ios` generato da `expo prebuild`, comunicazione via `WatchConnectivity` (framework nativo, esposto a RN con un modulo nativo custom).
 
-## Decisione
-Opzione 3. Implica:
-- `apps/mobile` non può restare in **Expo Go** managed puro: serve **prebuild** (bare-ish) per poter aggiungere il target Watch in Xcode.
-- Il target Watch è codice Swift/SwiftUI a parte, non React Native — vive in `apps/mobile/watch-native/` (placeholder in questo scaffold, target Xcode reale da creare al primo `expo prebuild`).
-- Un modulo nativo Expo (Swift, `expo-modules-core`) espone `WatchConnectivity` a JS per far parlare iPhone app e Watch app.
-- EAS Build deve essere configurato per includere lo scheme Watch nel build iOS.
+## Decisione (originale, ora superata)
+Opzione 3, con i rischi noti: prebuild obbligatorio (niente Expo Go), target Watch separato in Swift, modulo nativo Expo per `WatchConnectivity`, EAS Build multi-target.
 
-## Conseguenze
-- Complessità di build/CI più alta (Xcode multi-target, non solo `expo run:ios`).
-- Ogni aggiornamento Expo SDK va verificato anche contro il codice nativo custom (rischio di breaking change maggiore che con Expo Go puro).
-- Consigliato uno **spike separato** prima di investire nel modulo Palestra completo: progetto Expo minimo + prebuild + target Watch "Hello World" che scambia un messaggio con l'app, per validare la toolchain prima di costruirci sopra.
+## Perché è stata superata
+Con la disponibilità di una VM macOS per lo sviluppo locale, il rischio più grosso di questa opzione — il bridge RN↔modulo-nativo↔Watch, che andava validato con uno spike prima di costruirci sopra — non ha più senso di essere accettato: l'alternativa nativa pura lo elimina alla radice, al costo di una curva di apprendimento Swift (accettata, vedi ADR-0010) e della perdita di condivisione codice con il web (accettato: il web resta un dashboard marginale).

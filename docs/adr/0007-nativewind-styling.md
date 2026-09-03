@@ -1,16 +1,16 @@
 # ADR-0007: NativeWind (Tailwind) per lo styling condiviso
 
 ## Status
-Accettata
+**Superseded per la parte mobile da [ADR-0010](0010-swift-native-ios-watch.md).** Resta valida solo per `apps/web`.
 
-## Contesto
-Web (Next.js) e mobile (Expo/RN) sono progetti separati (componenti non condivisi 1:1), ma si vuole coerenza visiva e velocità nello styling senza reinventare un design system da zero per l'MVP.
+## Contesto (originale)
+Web (Next.js) e mobile (Expo/RN) erano progetti separati (componenti non condivisi 1:1), ma si voleva coerenza visiva e velocità nello styling senza reinventare un design system da zero per l'MVP.
 
-## Decisione
-- Tailwind CSS su `apps/web` (standard Next.js).
-- NativeWind su `apps/mobile` per usare le stesse classi utility in RN.
-- Token condivisi (colori, spacing) centralizzati in `packages/shared` (es. `tailwind.config` base importata da entrambi i progetti) per evitare drift tra le due palette.
+## Cosa resta valido
+- **Tailwind CSS su `apps/web`** (standard Next.js) — invariato.
+
+## Cosa è superato
+- NativeWind non si applica più: l'app mobile è Swift/SwiftUI nativo, styling gestito con `ViewModifier`/design token Swift, non Tailwind. Vedi ADR-0010.
 
 ## Conseguenze
-- I componenti restano scritti due volte (RN vs DOM), ma con lo stesso linguaggio di styling: riduce il costo cognitivo, non il codice duplicato.
-- Se in futuro servisse condivisione reale dei componenti, valutare Tamagui come migrazione (non necessario ora).
+- Nessun token condiviso automatico tra `apps/web` (Tailwind) e `apps/ios` (SwiftUI): se serve coerenza visiva tra i due, va mantenuta manualmente (es. stessa palette colori definita due volte, una in `tailwind.config.js`, una in un file Swift di design token).

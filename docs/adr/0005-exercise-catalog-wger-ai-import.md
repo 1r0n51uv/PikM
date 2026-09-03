@@ -13,4 +13,4 @@ Serve un catalogo esercizi ricco senza doverlo scrivere a mano, ma anche la poss
 
 ## Conseguenze
 - Tre "fonti di verità" per un `Exercise`: va gestita la dedup (matching per nome simile) per evitare doppioni tra wger/AI/custom.
-- La chiamata a Claude per l'import richiede una API key server-side (non esposta al client mobile) — quindi un piccolo endpoint/Edge Function Supabase che fa da proxy.
+- La chiamata a Claude per l'import richiede una API key server-side (non esposta al client nativo iOS) — implementata come Supabase Edge Function (`supabase/functions/ai-import-exercise/`, vedi ADR-0009), deployata insieme al resto dello stack self-hosted su AWS.

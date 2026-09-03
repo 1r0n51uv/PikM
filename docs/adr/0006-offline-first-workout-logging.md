@@ -1,17 +1,18 @@
 # ADR-0006: Offline-first per il log allenamento
 
 ## Status
-Accettata
+Accettata — rivista dopo [ADR-0010](0010-swift-native-ios-watch.md) (Swift nativo invece di Expo).
 
 ## Contesto
-In palestra spesso non c'è rete. Il log di una Workout Session (Set Log) deve funzionare comunque e sincronizzarsi quando torna la connessione.
+In palestra spesso non c'è rete. Il log di una Workout Session (Set Log) deve funzionare comunque e sincronizzarsi quando torna la connessione. Il backend (Supabase self-hosted su AWS, vedi ADR-0009) potrebbe anche non essere raggiungibile per motivi di rete lato client, non solo per assenza di segnale in palestra.
 
 ## Decisione
-- SQLite locale su mobile (`expo-sqlite` o `op-sqlite`) come sorgente di verità immediata per `Workout Session` e `Set Log` in corso.
-- Sync verso Supabase con coda di scrittura (outbox pattern): ogni mutazione locale viene accodata e ritentata alla riconnessione.
-- Conflitti risolti "last write wins" su `updated_at`, accettabile per un solo utente reale multi-device (non c'è concorrenza vera tra scritture simultanee).
-- Routine/Exercise (dati meno volatili) possono restare cache-then-network senza outbox dedicato.
+- **SwiftData** come sorgente di verità immediata per `Routine`, `Workout Session` e `Set Log` sul device (iPhone e, per la sessione attiva, anche Watch).
+- Sync verso Supabase (self-hosted) con un outbox pattern: ogni mutazione locale genera un record di sync in coda, processato da un `BackgroundTask` quando la rete torna disponibile.
+- Conflitti risolti "last write wins" su `updatedAt`, accettabile per un solo utente reale multi-device (non c'è concorrenza vera tra scritture simultanee).
+- Il Watch logga in SwiftData locale sul Watch stesso durante l'allenamento (nessuna dipendenza dalla rete Watch, spesso assente in palestra) e sincronizza con l'iPhone via `WatchConnectivity` non appena raggiungibile; l'iPhone resta l'hub verso Supabase — il Watch non parla mai direttamente col backend nell'MVP.
+- Routine/Exercise (dati meno volatili) restano cache-then-network senza outbox dedicato.
 
 ## Conseguenze
-- Introduce uno strato di sync client-side non banale (outbox + retry) da costruire prima di poter dire "il modulo Palestra è affidabile".
-- Il Watch companion (ADR-0003) deve anch'esso poter loggare offline e sincronizzare via `WatchConnectivity` verso l'iPhone, che poi sincronizza verso Supabase — l'iPhone è quindi l'hub, il Watch non parla direttamente con Supabase nell'MVP.
+- Introduce uno strato di sync client-side non banale (outbox + retry, gestito con `BackgroundTasks`/`URLSession` background) da costruire prima di poter dire "il modulo Palestra è affidabile".
+- Essendo il backend self-hosted (non gestito), un downtime dell'istanza AWS si comporta esattamente come "nessuna rete" lato client — l'outbox deve già gestire bene questo caso, quindi nessuna logica aggiuntiva richiesta per l'assenza di backup automatico (ADR-0009).
