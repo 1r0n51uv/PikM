@@ -1,7 +1,7 @@
 # ADR-0012: Tracking corporeo (peso, foto, misure)
 
 ## Status
-Accettata
+Accettata — `body_measurements` diventata trasversale (condivisa col modulo Dieta) in [ADR-0019](0019-nutrition-goals.md).
 
 ## Contesto
 Vuoi correlare l'andamento fisico (peso, foto, misure a nastro) con le performance in palestra (volume, PR), non solo loggare gli allenamenti.

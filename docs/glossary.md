@@ -44,6 +44,17 @@ Termini di dominio usati nel codice, nello schema DB e nella UI. Fonte di verit�
 - **Plate Set Config** — bilanciere e dischi realmente disponibili all'utente, usati dal calcolatore piastre in-sessione.
 - **Warm-up ramp** — serie di riscaldamento suggerite a percentuali fisse (40/60/80%) del peso di lavoro.
 
+## Modulo Dieta
+
+- **Food** — un alimento del catalogo, con macro per 100g. `source`: `openfoodfacts`, `usda`, `custom`.
+- **Recipe** — pasto riutilizzabile (template), composto da uno o più **Recipe Item** (food + quantità).
+- **Meal Entry** — un pasto effettivamente consumato e loggato, con `meal_slot` (breakfast/lunch/dinner/snack). Composto da **Meal Entry Item**, che *snapshotta* calorie/macro al momento del log (non ricalcola da `Food` in seguito).
+- **Planned Meal** — un pasto pianificato per una data futura; confermato diventa un Meal Entry collegato (`status: completed`), altrimenti resta `planned` o passa a `skipped`.
+- **Shopping List Item** — voce di una lista della spesa persistente e spuntabile, generabile dai Planned Meal ma modificabile liberamente dopo.
+- **Water Log / Supplement (Log) / Caffeine Log** — tre tracker semplici e separati dal log pasti: acqua in ml, integratori come checklist giornaliera, caffeina come voce rapida dedicata.
+- **Nutrition Goal** — obiettivo calorico/macro in grammi assoluti, con una `mode` attiva alla volta (`manual`, `phase_linked`, `tdee`). Tabella *append-only*: cambiare obiettivo inserisce una nuova riga (`effective_from`), non sovrascrive la precedente — necessario per calcolare correttamente l'aderenza storica.
+- **Fase collegata (phase_linked)** — l'obiettivo nutrizionale segue la fase della Routine attiva (bulk/cut/deload/maintenance, ADR-0015), ma solo su conferma esplicita dell'utente ad ogni cambio fase.
+
 ## Infrastruttura
 
 - **Self-hosted** — l'istanza Supabase (Postgres+Auth+Storage+Realtime+Functions) gira su un'istanza AWS EC2 di proprietà, non su Supabase Cloud (vedi ADR-0009).
@@ -53,4 +64,3 @@ Termini di dominio usati nel codice, nello schema DB e nella UI. Fonte di verit�
 ## Moduli futuri (non ancora modellati)
 
 - **Note / PKM** — appunti collegabili (backlink), tag.
-- **Dieta** — log pasti, contacalorie, macro, obiettivi.
