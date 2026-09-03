@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "PikM",
+    "slug": "pikm",
+    "scheme": "pikm",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "ios": {
+      "bundleIdentifier": "dev.pikm.app",
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSHealthShareUsageDescription": "PikM legge peso corporeo, passi e calorie attive da Salute per i moduli Palestra e Dieta.",
+        "NSHealthUpdateUsageDescription": "PikM salva i tuoi allenamenti su Salute."
+      },
+      "entitlements": {
+        "com.apple.developer.healthkit": true
+      }
+    },
+    "plugins": ["expo-sqlite"]
+  }
+}
