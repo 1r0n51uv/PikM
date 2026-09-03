@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@pikm/shared"],
+  transpilePackages: ["@1r0/shared"],
 };
 
 module.exports = nextConfig;

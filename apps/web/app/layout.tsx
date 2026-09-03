@@ -2,7 +2,7 @@ import "./globals.css";
 import type { ReactNode } from "react";
 
 export const metadata = {
-  title: "PikM",
+  title: "1r0",
   description: "PKM, dieta, appunti e tracker palestra — dashboard",
 };
 

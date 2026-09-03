@@ -1,4 +1,4 @@
-# PikM
+# 1r0
 
 App personale a moduli: PKM/appunti, dieta/contacalorie, palestra (schede +
 tracker), e altro in futuro. Ogni modulo vive come sezione dentro un'unica
@@ -15,7 +15,7 @@ Tutte le scelte (e le alternative scartate) sono documentate come ADR in
 [`docs/adr/`](docs/adr/), con il glossario dei termini di dominio in
 [`docs/glossary.md`](docs/glossary.md). Punto di partenza consigliato:
 
-1. `0010-swift-native-ios-watch.md` — perché Swift nativo invece di Expo (supersede `0003`)
+1. `0010-swift-native-ios-watch.md` — perché Swift nativo invece di Expo
 2. `0009-self-hosted-supabase-aws.md` — backend self-hosted su AWS EC2 (raffina `0002`)
 3. `0001-monorepo-turborepo.md` — struttura del repo
 4. `0006-offline-first-workout-logging.md` — perché serve un outbox locale (SwiftData)
@@ -53,7 +53,7 @@ Watch), un'istanza AWS EC2 per il backend (vedi `infra/README.md`).
 # web
 pnpm install
 cp apps/web/.env.example apps/web/.env.local   # da creare: SUPABASE_URL, SUPABASE_ANON_KEY
-pnpm --filter @pikm/web dev
+pnpm --filter @1r0/web dev
 
 # iOS/Watch: da fare su macOS/Xcode, vedi apps/ios/README.md
 ```

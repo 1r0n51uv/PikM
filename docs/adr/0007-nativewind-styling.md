@@ -1,16 +1,13 @@
-# ADR-0007: NativeWind (Tailwind) per lo styling condiviso
+# ADR-0007: Tailwind per il web
 
 ## Status
-**Superseded per la parte mobile da [ADR-0010](0010-swift-native-ios-watch.md).** Resta valida solo per `apps/web`.
+Accettata
 
-## Contesto (originale)
-Web (Next.js) e mobile (Expo/RN) erano progetti separati (componenti non condivisi 1:1), ma si voleva coerenza visiva e velocità nello styling senza reinventare un design system da zero per l'MVP.
+## Contesto
+`apps/web` è una dashboard Next.js secondaria (ADR-0001); serve uno styling rapido da mantenere senza costruire un design system da zero. Lo styling del mobile è nativo Swift/SwiftUI (ADR-0010) e non è in scope di questa ADR.
 
-## Cosa resta valido
-- **Tailwind CSS su `apps/web`** (standard Next.js) — invariato.
-
-## Cosa è superato
-- NativeWind non si applica più: l'app mobile è Swift/SwiftUI nativo, styling gestito con `ViewModifier`/design token Swift, non Tailwind. Vedi ADR-0010.
+## Decisione
+Tailwind CSS su `apps/web`, configurazione standard Next.js.
 
 ## Conseguenze
-- Nessun token condiviso automatico tra `apps/web` (Tailwind) e `apps/ios` (SwiftUI): se serve coerenza visiva tra i due, va mantenuta manualmente (es. stessa palette colori definita due volte, una in `tailwind.config.js`, una in un file Swift di design token).
+- Nessun token condiviso automaticamente con `apps/ios` (SwiftUI): se serve coerenza visiva tra web e app, va mantenuta manualmente (es. stessa palette colori definita due volte — una in `tailwind.config.js`, una in un file Swift di design token).

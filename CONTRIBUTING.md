@@ -1,4 +1,4 @@
-# Contribuire a PikM
+# Contribuire a 1r0
 
 Workflow di sviluppo — vedi `docs/adr/0021-piano-azione-workflow.md` per il
 contesto completo delle decisioni.

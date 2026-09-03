@@ -8,8 +8,8 @@ sulla VM macOS.
 
 ## Passi per crearlo
 
-1. Xcode → New Project → **App**, interfaccia SwiftUI, nome `PikM`,
-   bundle id `dev.pikm.app`, salvato dentro `apps/ios/`.
+1. Xcode → New Project → **App**, interfaccia SwiftUI, nome `1r0`,
+   bundle id `dev.1r0.app`, salvato dentro `apps/ios/`.
 2. Aggiungi un secondo target: File → New → Target → **Watch App**
    (associato all'app iOS), stesso bundle id prefix.
 3. Capability da abilitare su entrambi i target dove serve: **HealthKit**
@@ -18,7 +18,7 @@ sulla VM macOS.
    `docs/adr/0008-single-app-module-architecture.md`):
 
    ```
-   PikM/
+   1r0/
      App/                  entry point, DI, configurazione Supabase client
      Modules/
        Gym/
@@ -29,7 +29,7 @@ sulla VM macOS.
      Shared/
        HealthKit/
        Supabase/            client Swift (supabase-swift), auth
-   PikM Watch App/
+   1r0 Watch App/
      Modules/Gym/           avvio/log sessione da Watch, SwiftData locale
    ```
 

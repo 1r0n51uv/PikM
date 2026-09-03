@@ -1,10 +1,10 @@
 # ADR-0010: Swift/SwiftUI nativo per iOS + watchOS (supersede Expo)
 
 ## Status
-Accettata — supersede [ADR-0003](0003-expo-ios-first-watch-native-module.md).
+Accettata
 
 ## Contesto
-ADR-0003 accettava il rischio di un bridge Expo/RN + modulo nativo custom per il target Watch, da validare con uno spike prima di costruire feature sopra. Diventando disponibile una VM macOS per lo sviluppo locale, si è rivalutata l'opzione "tutto nativo" scartata inizialmente solo per il costo di doppia implementazione con il web.
+La prima ipotesi era Expo/React Native con un modulo nativo custom per il target Watch (bridge RN↔WatchConnectivity), da validare con uno spike prima di costruire feature sopra — scartata prima ancora di essere implementata. Diventando disponibile una VM macOS per lo sviluppo locale, si è rivalutata l'opzione "tutto nativo" scartata inizialmente solo per il costo di doppia implementazione con il web.
 
 ## Decisione
 - App iOS e app Watch scritte **interamente in Swift/SwiftUI**, un solo progetto Xcode (`apps/ios/`) con due target (iOS + watchOS) nello stesso workspace.
@@ -15,11 +15,11 @@ ADR-0003 accettava il rischio di un bridge Expo/RN + modulo nativo custom per il
 - Gestione dipendenze: Swift Package Manager (niente CocoaPods se evitabile).
 
 ## Alternative scartate
-- **Expo + modulo nativo custom (ADR-0003)**: scartata per il rischio di integrazione bridge↔Watch, non più necessario ora che la doppia implementazione Swift/React è accettata esplicitamente.
+- **Expo + modulo nativo custom**: scartata per il rischio di integrazione bridge↔Watch, non più necessario ora che la doppia implementazione Swift/React è accettata esplicitamente.
 - **Expo ora, Watch dopo**: scartata, il requisito Watch è day-1.
 
 ## Conseguenze
 - **Costo**: ogni feature del modulo Palestra (e futuri PKM/Dieta) va scritta due volte se serve anche sul web — accettato perché il web è dashboard marginale, non l'esperienza primaria.
 - **Learning curve**: Swift/SwiftUI da imparare da zero — rischio noto e accettato, mitigato costruendo il modulo Palestra come primo terreno di apprendimento pratico.
-- **Toolchain**: serve macOS (VM o hardware) per build/dev/test, non solo per il target Watch come in ADR-0003 — è ora vero per il 100% dello sviluppo mobile.
+- **Toolchain**: serve macOS (VM o hardware) per build/dev/test — è vero per il 100% dello sviluppo mobile, non solo per il target Watch.
 - Nessuna dipendenza da versioni Expo SDK/RN da tenere allineate al codice nativo: un solo ecosistema (Apple) da seguire.

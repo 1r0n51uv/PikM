@@ -1,4 +1,4 @@
-# Glossario — PikM
+# Glossario — 1r0
 
 Termini di dominio usati nel codice, nello schema DB e nella UI. Fonte di verità per naming coerente tra moduli.
 
