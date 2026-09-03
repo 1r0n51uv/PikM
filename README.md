@@ -22,6 +22,7 @@ Tutte le scelte (e le alternative scartate) sono documentate come ADR in
 5. `0011`–`0015` — espansioni modulo Palestra: coaching AI periodico, body tracking, strumenti in-sessione (piastre/warm-up/Live Activities), Siri Shortcuts, fasi routine (bulk/cut/deload)
 6. `0016-watch-app-scope.md` — cosa fa l'app Watch: log completo autonomo, pausa/annulla sessione, timer/haptics configurabili, streak in complication
 7. `0017`–`0020` — modulo Dieta: scope (contacalorie, pasti pianificati/ricette, lista spesa, acqua/integratori/caffeina), fonte dati alimenti (OpenFoodFacts+USDA), obiettivo calorico/macro collegabile alla fase Palestra, report/correlazioni
+8. `0021-piano-azione-workflow.md` — piano d'azione: ordine di lavoro (spike Watch → AWS → layout → pagine di prova), TDD end-to-end, task/branch/PR, CI — vedi anche `CONTRIBUTING.md` e le [issue aperte](https://github.com/1r0n51uv/PikM/issues)
 
 ## Struttura repo
 
@@ -59,21 +60,15 @@ pnpm --filter @pikm/web dev
 
 ## Stato dello scaffold
 
-Scaffold iniziale: ADR, schema DB, struttura cartelle, stub della Edge
-Function. Non ancora fatto:
+Scaffold iniziale: ADR, schema DB, struttura cartelle, stub delle Edge
+Functions, CI web, backlog di partenza. Prossimi passi (vedi ADR-0021 e le
+issue collegate):
 
-1. `pnpm install` e verifica build/typecheck di `apps/web` + `packages/shared`.
-2. Creare il progetto Xcode in `apps/ios/` (vedi `apps/ios/README.md`) e
-   implementare il modulo Palestra in SwiftUI seguendo lo schema in
-   `supabase/migrations/0001-0003_*.sql`.
-3. Provisioning dell'istanza EC2 e deploy di Supabase self-hosted (vedi
-   `infra/README.md`).
-4. Deploy delle Edge Functions `supabase/functions/ai-import-exercise/` e
-   `coaching-review/`.
-5. Implementare il modulo Dieta (schema già pronto in
-   `supabase/migrations/0004_diet_schema.sql`, tipi in
-   `packages/shared/src/types/diet.ts`) — al momento solo domain-modeling,
-   nessun codice Swift/UI ancora scritto.
+1. [#1](https://github.com/1r0n51uv/PikM/issues/1) Spike Watch Hello World.
+2. [#2](https://github.com/1r0n51uv/PikM/issues/2) Spike Supabase self-hosted su AWS.
+3. [#3](https://github.com/1r0n51uv/PikM/issues/3)/[#4](https://github.com/1r0n51uv/PikM/issues/4) Mockup layout Palestra/Dieta.
+4. [#5](https://github.com/1r0n51uv/PikM/issues/5) Verifica CI web su una PR reale.
+5. [#6](https://github.com/1r0n51uv/PikM/issues/6) Pagine di prova end-to-end (dopo #1 e #2).
 
 `packages/shared/src/types/gym.ts` e `diet.ts` restano utili come
 riferimento del dominio anche se non importabili da Swift — sono la fonte
