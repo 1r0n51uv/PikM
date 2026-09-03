@@ -43,9 +43,14 @@ export interface RoutineExercise {
   targetSets: number;
   targetReps: string;
   targetRestSeconds: number;
+  /** Se il timer di riposo parte da solo dopo aver loggato una serie di questo esercizio. */
+  autoStartRestTimer: boolean;
+  /** Override delle preferenze haptics di `WatchSettings` solo per questo esercizio. */
+  hapticsOverride?: Partial<WatchSettings> | null;
 }
 
 export type WorkoutSessionSource = "app" | "watch";
+export type WorkoutSessionStatus = "active" | "paused" | "completed" | "cancelled";
 
 export interface WorkoutSession {
   id: string;
@@ -55,6 +60,15 @@ export interface WorkoutSession {
   endedAt?: string | null;
   notes?: string | null;
   source: WorkoutSessionSource;
+  status: WorkoutSessionStatus;
+}
+
+/** Preferenze haptics globali (profiles.watch_settings), sovrascrivibili per esercizio. */
+export interface WatchSettings {
+  restEndHaptic: boolean;
+  setCompleteHaptic: boolean;
+  sessionCompleteHaptic: boolean;
+  restThresholdHaptic: boolean;
 }
 
 export interface SetLog {

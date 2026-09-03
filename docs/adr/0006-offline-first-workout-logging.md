@@ -1,7 +1,7 @@
 # ADR-0006: Offline-first per il log allenamento
 
 ## Status
-Accettata — rivista dopo [ADR-0010](0010-swift-native-ios-watch.md) (Swift nativo invece di Expo).
+Accettata — rivista dopo [ADR-0010](0010-swift-native-ios-watch.md) (Swift nativo invece di Expo) e confermata da [ADR-0016](0016-watch-app-scope.md) (log completo autonomo dal Watch, iPhone resta l'unico hub verso Supabase).
 
 ## Contesto
 In palestra spesso non c'è rete. Il log di una Workout Session (Set Log) deve funzionare comunque e sincronizzarsi quando torna la connessione. Il backend (Supabase self-hosted su AWS, vedi ADR-0009) potrebbe anche non essere raggiungibile per motivi di rete lato client, non solo per assenza di segnale in palestra.

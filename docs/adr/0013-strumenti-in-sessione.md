@@ -1,7 +1,7 @@
 # ADR-0013: Strumenti in-sessione (piastre, warm-up, video, Live Activities)
 
 ## Status
-Accettata
+Accettata — timer auto-start e haptics dettagliati e resi configurabili in [ADR-0016](0016-watch-app-scope.md) (scope app Watch).
 
 ## Contesto
 Durante l'allenamento servono strumenti pratici oltre al semplice log: sapere quali piastre caricare, come scaldarsi, vedere come si esegue un esercizio, e monitorare il timer di riposo senza dover riaprire l'app.

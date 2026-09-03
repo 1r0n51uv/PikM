@@ -19,6 +19,7 @@ Tutte le scelte (e le alternative scartate) sono documentate come ADR in
 3. `0001-monorepo-turborepo.md` — struttura del repo
 4. `0006-offline-first-workout-logging.md` — perché serve un outbox locale (SwiftData)
 5. `0011`–`0015` — espansioni modulo Palestra: coaching AI periodico, body tracking, strumenti in-sessione (piastre/warm-up/Live Activities), Siri Shortcuts, fasi routine (bulk/cut/deload)
+6. `0016-watch-app-scope.md` — cosa fa l'app Watch: log completo autonomo, pausa/annulla sessione, timer/haptics configurabili, streak in complication
 
 ## Struttura repo
 

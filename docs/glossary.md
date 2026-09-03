@@ -32,6 +32,12 @@ Termini di dominio usati nel codice, nello schema DB e nella UI. Fonte di verit�
 - **Coaching Suggestion** — proposta di modifica a una `Routine` generata periodicamente da Claude (analisi dello storico), con stato `pending`/`accepted`/`rejected`. Mai applicata automaticamente.
 - **Fase (Routine Phase)** — etichetta informativa su una `Routine`: `bulk`, `cut`, `deload`, `maintenance`. Non altera automaticamente i target.
 
+## App Watch
+
+- **Sessione pausata/annullata** — `WorkoutSession.status`: `paused` è ripresa più tardi, `cancelled` esclude la sessione da statistiche/streak/HealthKit ma non cancella i `SetLog` già inseriti.
+- **Modifica "solo per oggi" vs template** — quando aggiungi una serie extra o cambi un peso dal Watch, l'app chiede sempre se applicarlo anche a `RoutineExercise` (le prossime volte) o solo alla sessione corrente.
+- **Watch Settings** — preferenze haptics globali (`profiles.watch_settings`), sovrascrivibili per singolo esercizio (`RoutineExercise.hapticsOverride`).
+
 ## Corpo e strumenti
 
 - **Body Measurement** — rilevazione periodica di peso, misure a nastro (chiavi libere) e foto, correlabile con volume/PR per vedere l'effetto degli allenamenti.
