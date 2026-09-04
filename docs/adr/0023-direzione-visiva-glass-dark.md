@@ -12,7 +12,7 @@ Direzione scelta: **Glass Dark** — dark-first, pannelli traslucidi con `backdr
 - **Palestra (iPhone)**: lista routine, sessione live, impostazioni/aspetto, progressi (peso/misure/foto), catalogo esercizi + import AI, revisione coaching AI, editor scheda (routine builder), dettaglio esercizio, riepilogo fine allenamento
 - **Dieta (iPhone)**: dashboard giornaliera, log pasto, pianificazione pasti, editor ricetta, lista della spesa, obiettivo nutrizionale, report/andamento
 - **Onboarding**: accesso via magic link, condiviso tra i moduli
-- **Apple Watch**: home/routine, sessione live, rest timer — stesso linguaggio visivo del telefono, adattato alla cornice tonda
+- **Apple Watch**: home/routine, sessione live, rest timer, menu sessione (pausa/annulla, ADR-0016), prompt salva-in-scheda per modifiche ad hoc, riepilogo fine allenamento, complication quadrante (streak) — stesso linguaggio visivo del telefono, adattato alla cornice tonda
 
 Ogni schermata elencata sopra ha un mockup di riferimento sul canvas, così che l'implementazione Swift/SwiftUI abbia sempre un punto di partenza visivo senza dover reinventare il layout in codice.
 
