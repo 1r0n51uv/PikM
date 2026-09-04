@@ -9,9 +9,12 @@ ADR-0021 prevedeva un mockup visivo prima del codice (issue [#3](https://github.
 ## Decisione
 Direzione scelta: **Glass Dark** — dark-first, pannelli traslucidi con `backdrop-filter: blur()`, sfondo con blob sfumati colorati, angoli arrotondati uniformi, tipografia Space Grotesk (numeri/titoli) + Manrope (corpo). Corrisponde alla pagina "★ Direzione scelta — Glass Dark" nel canvas dei mockup, che copre:
 
-- **Palestra (iPhone)**: lista routine, sessione live, impostazioni/aspetto, progressi (peso/misure/foto), catalogo esercizi + import AI, revisione coaching AI
-- **Dieta (iPhone)**: dashboard giornaliera, log pasto
+- **Palestra (iPhone)**: lista routine, sessione live, impostazioni/aspetto, progressi (peso/misure/foto), catalogo esercizi + import AI, revisione coaching AI, editor scheda (routine builder), dettaglio esercizio, riepilogo fine allenamento
+- **Dieta (iPhone)**: dashboard giornaliera, log pasto, pianificazione pasti, editor ricetta, lista della spesa, obiettivo nutrizionale, report/andamento
+- **Onboarding**: accesso via magic link, condiviso tra i moduli
 - **Apple Watch**: home/routine, sessione live, rest timer — stesso linguaggio visivo del telefono, adattato alla cornice tonda
+
+Ogni schermata elencata sopra ha un mockup di riferimento sul canvas, così che l'implementazione Swift/SwiftUI abbia sempre un punto di partenza visivo senza dover reinventare il layout in codice.
 
 Le altre direzioni esplorate restano sul canvas come riferimento storico, non vengono cancellate.
 
