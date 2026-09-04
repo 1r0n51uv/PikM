@@ -39,16 +39,3 @@ create table if not exists coaching_suggestions (
 );
 
 create index if not exists coaching_suggestions_user_idx on coaching_suggestions (user_id, status);
-
-alter table body_measurements enable row level security;
-alter table plate_set_configs enable row level security;
-alter table coaching_suggestions enable row level security;
-
-create policy "body_measurements: own" on body_measurements
-  for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-
-create policy "plate_set_configs: own" on plate_set_configs
-  for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-
-create policy "coaching_suggestions: own" on coaching_suggestions
-  for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
