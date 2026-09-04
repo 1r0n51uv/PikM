@@ -7,7 +7,11 @@ Accettata
 ADR-0021 prevedeva un mockup visivo prima del codice (issue [#3](https://github.com/1r0n51uv/PikM/issues/3)/[#4](https://github.com/1r0n51uv/PikM/issues/4)). Sono state esplorate ~10 direzioni sul canvas pubblicato (dense/glow scuro, glass, editorial bold, grid data, organic soft, ibridi glass+organic su 3 palette, 6 layout senza dark/glass per confronto, 10 varianti di information architecture dentro dark+glass).
 
 ## Decisione
-Direzione scelta: **Glass Dark** — dark-first, pannelli traslucidi con `backdrop-filter: blur()`, sfondo con blob sfumati colorati, angoli arrotondati uniformi, tipografia Space Grotesk (numeri/titoli) + Manrope (corpo). Corrisponde alla pagina "★ Direzione scelta — Glass Dark" nel canvas dei mockup (schermate Palestra: routine, sessione live, impostazioni; Dieta: dashboard, log pasto).
+Direzione scelta: **Glass Dark** — dark-first, pannelli traslucidi con `backdrop-filter: blur()`, sfondo con blob sfumati colorati, angoli arrotondati uniformi, tipografia Space Grotesk (numeri/titoli) + Manrope (corpo). Corrisponde alla pagina "★ Direzione scelta — Glass Dark" nel canvas dei mockup, che copre:
+
+- **Palestra (iPhone)**: lista routine, sessione live, impostazioni/aspetto, progressi (peso/misure/foto), catalogo esercizi + import AI, revisione coaching AI
+- **Dieta (iPhone)**: dashboard giornaliera, log pasto
+- **Apple Watch**: home/routine, sessione live, rest timer — stesso linguaggio visivo del telefono, adattato alla cornice tonda
 
 Le altre direzioni esplorate restano sul canvas come riferimento storico, non vengono cancellate.
 
