@@ -23,6 +23,7 @@ Tutte le scelte (e le alternative scartate) sono documentate come ADR in
 6. `0016-watch-app-scope.md` — cosa fa l'app Watch: log completo autonomo, pausa/annulla sessione, timer/haptics configurabili, streak in complication
 7. `0017`–`0020` — modulo Dieta: scope (contacalorie, pasti pianificati/ricette, lista spesa, acqua/integratori/caffeina), fonte dati alimenti (OpenFoodFacts+USDA), obiettivo calorico/macro collegabile alla fase Palestra, report/correlazioni
 8. `0021-piano-azione-workflow.md` — piano d'azione: ordine di lavoro (spike Watch → AWS → layout → pagine di prova), TDD end-to-end, task/branch/PR, CI — vedi anche `CONTRIBUTING.md` e le [issue aperte](https://github.com/1r0n51uv/PikM/issues)
+9. `0023-direzione-visiva-glass-dark.md` — direzione visiva scelta (Glass Dark) dopo l'esplorazione di mockup su canvas
 
 ## Struttura repo
 
@@ -66,7 +67,7 @@ issue collegate):
 
 1. [#1](https://github.com/1r0n51uv/PikM/issues/1) Spike Watch Hello World.
 2. [#2](https://github.com/1r0n51uv/PikM/issues/2) Spike Supabase self-hosted su AWS.
-3. [#3](https://github.com/1r0n51uv/PikM/issues/3)/[#4](https://github.com/1r0n51uv/PikM/issues/4) Mockup layout Palestra/Dieta.
+3. ~~[#3](https://github.com/1r0n51uv/PikM/issues/3)/[#4](https://github.com/1r0n51uv/PikM/issues/4) Mockup layout Palestra/Dieta.~~ Fatto — direzione **Glass Dark** scelta, vedi ADR-0023.
 4. [#5](https://github.com/1r0n51uv/PikM/issues/5) Verifica CI web su una PR reale.
 5. [#6](https://github.com/1r0n51uv/PikM/issues/6) Pagine di prova end-to-end (dopo #1 e #2).
 
