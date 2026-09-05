@@ -19,24 +19,25 @@ sulla VM macOS.
 
    ```
    1r0/
-     App/                  entry point, DI, configurazione Supabase client
+     App/                  entry point, DI, configurazione client API
      Modules/
        Gym/
          Views/
          ViewModels/
          Models/            SwiftData models: Routine, WorkoutSession, SetLog, Exercise
-         Sync/              outbox pattern verso Supabase (ADR-0006)
+         Sync/              outbox pattern verso il backend custom (ADR-0006)
      Shared/
        HealthKit/
-       Supabase/            client Swift (supabase-swift), auth
+       API/                 client REST minimale (URLSession), auth via API key statica (ADR-0022)
    1r0 Watch App/
      Modules/Gym/           avvio/log sessione da Watch, SwiftData locale
    ```
 
-5. Dipendenze via Swift Package Manager: `supabase-swift`
-   (github.com/supabase-community/supabase-swift).
-6. `.env`/secrets: URL e anon key dell'istanza Supabase self-hosted
-   (ADR-0009) in un file di config non committato (es. `Config.xcconfig`
+5. Dipendenze via Swift Package Manager: nessuna libreria di rete esterna
+   necessaria per ora — `URLSession` nativo basta per un client REST con
+   API key statica (ADR-0022, niente più `supabase-swift`).
+6. `.env`/secrets: URL del servizio backend e API key statica (ADR-0022)
+   in un file di config non committato (es. `Config.xcconfig`
    ignorato da git, o `Secrets.swift` generato a build time).
 
 ## Stato
@@ -44,4 +45,6 @@ sulla VM macOS.
 Solo placeholder — nessun codice Swift ancora scritto in questo repo.
 Il modulo Palestra (schema in `supabase/migrations/0001_gym_schema.sql`,
 tipi di riferimento in `packages/shared/src/types/gym.ts` — utile come
-riferimento anche se non importabile da Swift) è il primo da implementare.
+riferimento anche se non importabile da Swift) è il primo da implementare,
+ma resta bloccato dagli spike #1 (Watch↔iPhone) e #2 (backend
+raggiungibile) finché non sono validati — vedi ADR-0021.

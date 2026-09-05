@@ -1,7 +1,7 @@
 # ADR-0009: Supabase self-hosted su AWS EC2 (invece di Supabase Cloud)
 
 ## Status
-Accettata — raffina [ADR-0002](0002-supabase-backend.md) (che resta valida per la scelta di *Supabase come software*: Postgres+Auth+Storage+Realtime+Edge Functions).
+Superata da [ADR-0022](0022-custom-backend-node-fastify.md) per lo *stack software* (niente più Docker Compose Supabase: un singolo servizio Node.js/Fastify). La scelta di **istanza AWS EC2 + Caddy come reverse proxy/TLS** sotto resta valida — è l'unica parte di questa ADR ancora in vigore.
 
 ## Contesto
 Preferenza per tenere i dati sotto controllo diretto invece che su Supabase Cloud managed, mantenendo comunque Supabase come software (Docker Compose ufficiale) per non perdere Auth/RLS/Storage/Realtime/Edge Functions già decisi in ADR-0002.

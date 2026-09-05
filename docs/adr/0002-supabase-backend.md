@@ -1,7 +1,7 @@
 # ADR-0002: Supabase come backend (Postgres + Auth + Storage)
 
 ## Status
-Accettata — hosting rivisto in [ADR-0009](0009-self-hosted-supabase-aws.md) (self-hosted su AWS invece di Supabase Cloud). Le decisioni su Postgres/Auth/RLS/Storage sotto restano valide indipendentemente da dove gira l'istanza.
+Superata da [ADR-0022](0022-custom-backend-node-fastify.md) per Auth/RLS/Storage/Edge Functions (si passa a un servizio Node.js/Fastify custom con API key statica, niente Supabase come software). La scelta di **Postgres come DB** sotto resta valida — è l'unica parte di questa ADR ancora in vigore.
 
 ## Contesto
 App single-user ma multi-device (iOS, Watch, web): serve comunque un account per sincronizzare gli stessi dati tra i client. Niente budget/team per gestire infrastruttura custom da zero (per questo si sceglie Supabase come software, non un backend scritto a mano).
