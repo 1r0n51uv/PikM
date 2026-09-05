@@ -9,8 +9,8 @@ ADR-0021 prevedeva un mockup visivo prima del codice (issue [#3](https://github.
 ## Decisione
 Direzione scelta: **Glass Dark** — dark-first, pannelli traslucidi con `backdrop-filter: blur()`, sfondo con blob sfumati colorati, angoli arrotondati uniformi, tipografia Space Grotesk (numeri/titoli) + Manrope (corpo). Corrisponde alla pagina "★ Direzione scelta — Glass Dark" nel canvas dei mockup, che copre:
 
-- **Palestra (iPhone)**: lista routine, sessione live, impostazioni/aspetto, progressi (peso/misure/foto), catalogo esercizi + import AI, revisione coaching AI, editor scheda (routine builder), dettaglio esercizio, riepilogo fine allenamento
-- **Dieta (iPhone)**: dashboard giornaliera, log pasto, pianificazione pasti, editor ricetta, lista della spesa, obiettivo nutrizionale, report/andamento
+- **Palestra (iPhone)**: lista routine (con fase bulk/cut/deload/maintenance, ADR-0015), sessione live, impostazioni/aspetto, progressi (peso/misure/foto), catalogo esercizi + import AI, revisione coaching AI, editor scheda (routine builder), dettaglio esercizio, riepilogo fine allenamento, calcolatore piastre, riscaldamento automatico, video/demo esercizio in sessione, Live Activity/Dynamic Island per il timer di riposo (tutti e quattro da ADR-0013)
+- **Dieta (iPhone)**: dashboard giornaliera (con quick-log acqua/caffeina/integratori), log pasto, ricerca alimento + barcode scan (ADR-0018), pianificazione pasti, editor ricetta, lista della spesa, obiettivo nutrizionale, report/andamento, checklist integratori, tracker caffeina (tracker semplici da ADR-0017)
 - **Onboarding**: accesso via magic link, condiviso tra i moduli
 - **Apple Watch**: home/routine, sessione live, rest timer, menu sessione (pausa/annulla, ADR-0016), prompt salva-in-scheda per modifiche ad hoc, riepilogo fine allenamento, complication quadrante (streak) — stesso linguaggio visivo del telefono, adattato alla cornice tonda
 
